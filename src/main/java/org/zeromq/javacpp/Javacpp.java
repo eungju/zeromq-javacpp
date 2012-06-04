@@ -7,7 +7,6 @@ import com.googlecode.javacpp.Pointer;
 import com.googlecode.javacpp.SizeTPointer;
 import com.googlecode.javacpp.annotation.Cast;
 import com.googlecode.javacpp.annotation.Const;
-import com.googlecode.javacpp.annotation.NoDeallocator;
 import com.googlecode.javacpp.annotation.Platform;
 import com.googlecode.javacpp.annotation.Properties;
 
