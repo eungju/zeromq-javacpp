@@ -17,21 +17,12 @@ public class hwclient {
                 requester.connect("tcp://localhost:5555");
 
                 for (int request_nbr = 0; request_nbr != 10; request_nbr++) {
-                    ZmqMsg request = new ZmqMsg("Hello".getBytes());
-                    try {
-                        System.out.print(String.format("Sending %s %d…\n", new String(request.data()), request_nbr));
-                        requester.send(request, 0);
-                    } finally {
-                        Closeables.closeQuietly(request);
-                    }
+                    byte[] request = "Hello".getBytes();
+                    System.out.print(String.format("Sending %s %d…\n", new String(request), request_nbr));
+                    requester.send(request, 0);
 
-                    ZmqMsg reply = new ZmqMsg();
-                    try {
-                        requester.recv(reply, 0);
-                        System.out.print(String.format("Received %s %d\n", new String(reply.data()), request_nbr));
-                    } finally {
-                        Closeables.closeQuietly(reply);
-                    }
+                    byte[] reply = requester.recv(0);
+                    System.out.print(String.format("Received %s %d\n", new String(reply), request_nbr));
                 }
             } finally {
                 Closeables.closeQuietly(requester);

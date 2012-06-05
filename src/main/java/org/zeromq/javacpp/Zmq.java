@@ -58,7 +58,7 @@ public class Zmq {
         IntPointer major = new IntPointer(version.position(0));
         IntPointer minor = new IntPointer(version.position(1));
         IntPointer patch = new IntPointer(version.position(2));
-        Javacpp.zmq_version(major, minor, patch);
+        zmq_version(major, minor, patch);
         return new int[] { major.get(), minor.get(), patch.get() };
     }
 }

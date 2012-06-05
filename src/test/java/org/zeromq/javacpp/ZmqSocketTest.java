@@ -18,7 +18,7 @@ public class ZmqSocketTest {
     }
 
     @Test public void
-    client_socket() {
+    connect() {
         ZmqSocket socket = new ZmqSocket(context, Zmq.REQ);
         try {
             socket.connect("tcp://localhost:5555");
@@ -28,7 +28,7 @@ public class ZmqSocketTest {
     }
 
     @Test public void
-    server_socket() {
+    bind() {
         ZmqSocket socket = new ZmqSocket(context, Zmq.REP);
         try {
             socket.bind("tcp://*:5555");
@@ -38,7 +38,7 @@ public class ZmqSocketTest {
     }
 
     @Test public void
-    send_and_recv() {
+    send_and_recv_msg() {
         byte[] data = new byte[] { 1, 2, 3 };
 
         ZmqSocket responder = new ZmqSocket(context, Zmq.REP);
@@ -65,6 +65,29 @@ public class ZmqSocketTest {
             } finally {
                 reply.close();
             }
+        } finally {
+            responder.close();
+        }
+    }
+
+    @Test public void
+    send_and_recv_byte_array() {
+        byte[] request = new byte[] { 1, 2, 3 };
+
+        ZmqSocket responder = new ZmqSocket(context, Zmq.REP);
+        try {
+            responder.bind("tcp://*:5555");
+
+            ZmqSocket requester = new ZmqSocket(context, Zmq.REQ);
+            try {
+                requester.connect("tcp://localhost:5555");
+                requester.send(request, 0);
+            } finally {
+                requester.close();
+            }
+
+            byte[] reply = responder.recv(0);
+            assertArrayEquals(request, reply);
         } finally {
             responder.close();
         }

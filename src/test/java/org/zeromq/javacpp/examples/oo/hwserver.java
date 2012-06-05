@@ -3,7 +3,6 @@ package org.zeromq.javacpp.examples.oo;
 import com.google.common.io.Closeables;
 import org.zeromq.javacpp.Zmq;
 import org.zeromq.javacpp.ZmqContext;
-import org.zeromq.javacpp.ZmqMsg;
 import org.zeromq.javacpp.ZmqSocket;
 
 public class hwserver {
@@ -17,24 +16,14 @@ public class hwserver {
 
                 while (true) {
                     //  Wait for next request from client
-                    ZmqMsg request = new ZmqMsg();
-                    try {
-                        responder.recv(request, 0);
-                        System.out.print(String.format("Received %s\n", new String(request.data())));
-                    } finally {
-                        Closeables.closeQuietly(request);
-                    }
+                    byte[] request = responder.recv(0);
+                    System.out.print(String.format("Received %s\n", new String(request)));
 
                     //  Do some 'work'
                     Thread.sleep (1 * 1000);
 
                     //  Send reply back to client
-                    ZmqMsg reply = new ZmqMsg("World".getBytes());
-                    try {
-                        responder.send(reply, 0);
-                    } finally {
-                        Closeables.closeQuietly(reply);
-                    }
+                    responder.send("World".getBytes(), 0);
                 }
                 //  We never get here but if we did, this would be how we end
             } finally {

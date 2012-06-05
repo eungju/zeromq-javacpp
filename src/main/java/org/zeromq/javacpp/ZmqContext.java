@@ -17,7 +17,7 @@ public class ZmqContext implements Closeable {
     }
 
     public void close() {
-        if (Javacpp.zmq_term(underlying) != 0) {
+        if (zmq_term(underlying) != 0) {
             throw new ZmqException(zmq_errno());
         }
     }

@@ -50,4 +50,23 @@ public class ZmqSocket implements Closeable {
             throw new ZmqException(zmq_errno());
         }
     }
+
+    public void send(byte[] data, int flags) {
+        ZmqMsg msg = new ZmqMsg(data);
+        try {
+            send(msg, flags);
+        } finally {
+            msg.close();
+        }
+    }
+
+    public byte[] recv(int flags) {
+        ZmqMsg msg = new ZmqMsg();
+        try {
+            recv(msg, flags);
+            return msg.data();
+        } finally {
+            msg.close();
+        }
+    }
 }
