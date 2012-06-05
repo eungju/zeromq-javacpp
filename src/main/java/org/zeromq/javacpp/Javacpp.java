@@ -21,15 +21,6 @@ public class Javacpp {
     public static native int zmq_errno();
     public static native String zmq_strerror(int errnum);
 
-    public static final int ZMQ_MAX_VSM_SIZE = 30;
-
-    public static final int ZMQ_DELIMITER = 31,
-        ZMQ_VSM = 32;
-
-    public static final int ZMQ_MSG_MORE = 1,
-        ZMQ_MSG_SHARED = 128,
-        ZMQ_MSG_MASK = 129;
-
     public static class zmq_msg_t extends Pointer {
         static { Loader.load(); }
 
@@ -47,13 +38,13 @@ public class Javacpp {
     }
 
     public static native int zmq_msg_init(zmq_msg_t msg);
-    public static native int zmq_msg_init_size(zmq_msg_t msg, @Cast("size_t") long size);
-    public static native int zmq_msg_init_data(zmq_msg_t msg, Pointer data, @Cast("size_t") long size, zmq_free_fn ffn, Pointer hint);
+    public static native int zmq_msg_init_size(zmq_msg_t msg, @Cast("size_t") int size);
+    public static native int zmq_msg_init_data(zmq_msg_t msg, Pointer data, @Cast("size_t") int size, zmq_free_fn ffn, Pointer hint);
     public static native int zmq_msg_close(zmq_msg_t msg);
     public static native int zmq_msg_move(zmq_msg_t dest, zmq_msg_t src);
     public static native int zmq_msg_copy(zmq_msg_t dest, zmq_msg_t src);
     public static native Pointer zmq_msg_data(zmq_msg_t msg);
-    public static native @Cast("size_t") long zmq_msg_size(zmq_msg_t msg);
+    public static native @Cast("size_t") int zmq_msg_size(zmq_msg_t msg);
 
     public static native Pointer zmq_init(int io_threads);
     public static native int zmq_term(Pointer context);
@@ -105,7 +96,7 @@ public class Javacpp {
 
     public static native Pointer zmq_socket(Pointer context, int type);
     public static native int zmq_close(Pointer s);
-    public static native int zmq_setsockopt(Pointer s, int option, @Const Pointer optval, @Cast("size_t") long optvallen);
+    public static native int zmq_setsockopt(Pointer s, int option, @Const Pointer optval, @Cast("size_t") int optvallen);
     public static native int zmq_getsockopt(Pointer s, int option, Pointer optval, SizeTPointer optvallen);
     public static native int zmq_bind(Pointer s, String addr);
     public static native int zmq_connect(Pointer s, String addr);
