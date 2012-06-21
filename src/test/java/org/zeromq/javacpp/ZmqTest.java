@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static org.zeromq.javacpp.Javacpp.*;
 
 public class ZmqTest {
     @Test public void

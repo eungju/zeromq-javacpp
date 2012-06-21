@@ -4,7 +4,7 @@ import com.googlecode.javacpp.Pointer;
 
 import java.io.Closeable;
 
-import static org.zeromq.javacpp.Javacpp.*;
+import static org.zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqContext implements Closeable {
     final Pointer underlying;

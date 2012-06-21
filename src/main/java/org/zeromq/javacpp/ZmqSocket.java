@@ -1,10 +1,11 @@
 package org.zeromq.javacpp;
 
+import com.googlecode.javacpp.BytePointer;
 import com.googlecode.javacpp.Pointer;
 
 import java.io.Closeable;
 
-import static org.zeromq.javacpp.Javacpp.*;
+import static org.zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqSocket implements Closeable {
     final Pointer underlying;
@@ -18,6 +19,14 @@ public class ZmqSocket implements Closeable {
 
     public void close() {
         int rc = zmq_close(underlying);
+        if (rc != 0) {
+            throw new ZmqException(zmq_errno());
+        }
+    }
+
+    public void subscribe(byte[] filter) {
+        BytePointer valuePtr = new BytePointer(filter);
+        int rc = zmq_setsockopt(underlying, ZmqJavacpp.ZMQ_SUBSCRIBE, valuePtr, filter.length);
         if (rc != 0) {
             throw new ZmqException(zmq_errno());
         }

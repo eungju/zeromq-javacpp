@@ -13,7 +13,7 @@ import com.googlecode.javacpp.annotation.Properties;
 @Properties({
         @Platform(value="macosx", include = "zmq.h", link = "zmq")
 })
-public class Javacpp {
+public class ZmqJavacpp {
     static { Loader.load(); }
 
     public static native void zmq_version(IntPointer major, IntPointer minor, IntPointer patch);

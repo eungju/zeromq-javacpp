@@ -1,6 +1,6 @@
 package org.zeromq.javacpp;
 
-import static org.zeromq.javacpp.Javacpp.*;
+import static org.zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqException extends RuntimeException {
     private final int errnum;

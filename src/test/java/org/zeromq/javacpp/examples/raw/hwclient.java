@@ -3,7 +3,7 @@ package org.zeromq.javacpp.examples.raw;
 import com.googlecode.javacpp.BytePointer;
 import com.googlecode.javacpp.Pointer;
 
-import static org.zeromq.javacpp.Javacpp.*;
+import static org.zeromq.javacpp.ZmqJavacpp.*;
 
 public class hwclient {
     public static void main(String[] args) {

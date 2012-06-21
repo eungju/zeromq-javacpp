@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static org.zeromq.javacpp.Javacpp.*;
+import static org.zeromq.javacpp.ZmqJavacpp.*;
 
-public class JavacppTest {
+public class ZmqJavacppTest {
     @Test
     public void
     errno() {
