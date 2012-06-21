@@ -24,4 +24,16 @@ public class Zmq {
     public static ZmqContext init(int ioThreads) {
         return new ZmqContext(ioThreads);
     }
+
+    static void throwIfNotZero(int rc) {
+        if (rc != 0) {
+            throw new ZmqException(zmq_errno());
+        }
+    }
+
+    static void throwIfNull(Object o) {
+        if (o == null) {
+            throw new ZmqException(zmq_errno());
+        }
+    }
 }

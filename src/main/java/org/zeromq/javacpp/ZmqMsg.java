@@ -12,24 +12,18 @@ public class ZmqMsg implements Closeable {
     public ZmqMsg() {
         underlying = new zmq_msg_t();
         int rc = zmq_msg_init(underlying);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public ZmqMsg(byte[] data) {
         underlying = new zmq_msg_t();
         int rc = zmq_msg_init_data(underlying, new BytePointer(data), data.length, null, null);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public void close() {
         int rc = zmq_msg_close(underlying);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public int size() {

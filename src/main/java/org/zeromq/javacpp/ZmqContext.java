@@ -11,16 +11,12 @@ public class ZmqContext implements Closeable {
 
     ZmqContext(int ioThreads) {
         underlying = zmq_init(ioThreads);
-        if (underlying == null) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNull(underlying);
     }
 
     public void close() {
         int rc = zmq_term(underlying);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public ZmqSocket pair() {

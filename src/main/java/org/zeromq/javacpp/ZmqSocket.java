@@ -12,52 +12,38 @@ public class ZmqSocket implements Closeable {
 
     ZmqSocket(ZmqContext context, int type) {
         underlying = zmq_socket(context.underlying, type);
-        if (underlying == null) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNull(underlying);
     }
 
     public void close() {
         int rc = zmq_close(underlying);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public void subscribe(byte[] filter) {
         BytePointer valuePtr = new BytePointer(filter);
         int rc = zmq_setsockopt(underlying, ZmqJavacpp.ZMQ_SUBSCRIBE, valuePtr, filter.length);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public void bind(String addr) {
         int rc = zmq_bind(underlying, addr);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public void connect(String addr) {
         int rc = zmq_connect(underlying, addr);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public void send(ZmqMsg msg, int flags) {
         int rc = zmq_send(underlying, msg.underlying, flags);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public void recv(ZmqMsg msg, int flags) {
         int rc = zmq_recv(underlying, msg.underlying, flags);
-        if (rc != 0) {
-            throw new ZmqException(zmq_errno());
-        }
+        Zmq.throwIfNotZero(rc);
     }
 
     public void send(byte[] data, int flags) {
