@@ -7,10 +7,10 @@ import org.zeromq.javacpp.ZmqSocket;
 
 public class hwserver {
     public static void main(String[] args) throws Exception {
-        ZmqContext context = new ZmqContext(1);
+        ZmqContext context = Zmq.init(1);
         try {
             //  Socket to talk to clients
-            ZmqSocket responder = new ZmqSocket(context, Zmq.REP);
+            ZmqSocket responder = context.rep();
             try {
                 responder.bind("tcp://*:5555");
 

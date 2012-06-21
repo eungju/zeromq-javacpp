@@ -14,9 +14,9 @@ import java.util.Random;
 public class wuserver {
     public static void main(String[] args) {
         //  Prepare our context and publisher
-        ZmqContext context = new ZmqContext(1);
+        ZmqContext context = Zmq.init(1);
         try {
-            ZmqSocket publisher = new ZmqSocket(context, Zmq.PUB);
+            ZmqSocket publisher = context.pub();
             try {
                 publisher.bind("tcp://*:5556");
                 publisher.bind("ipc://weather.ipc");

@@ -4,7 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqSocketTest {
     ZmqContext context;
@@ -19,7 +20,7 @@ public class ZmqSocketTest {
 
     @Test public void
     connect() {
-        ZmqSocket socket = new ZmqSocket(context, Zmq.REQ);
+        ZmqSocket socket = new ZmqSocket(context, ZMQ_REQ);
         try {
             socket.connect("tcp://localhost:5555");
         } finally {
@@ -29,7 +30,7 @@ public class ZmqSocketTest {
 
     @Test public void
     bind() {
-        ZmqSocket socket = new ZmqSocket(context, Zmq.REP);
+        ZmqSocket socket = new ZmqSocket(context, ZMQ_REP);
         try {
             socket.bind("tcp://*:5555");
         } finally {
@@ -41,11 +42,11 @@ public class ZmqSocketTest {
     send_and_recv_msg() {
         byte[] data = new byte[] { 1, 2, 3 };
 
-        ZmqSocket responder = new ZmqSocket(context, Zmq.REP);
+        ZmqSocket responder = new ZmqSocket(context, ZMQ_REP);
         try {
             responder.bind("tcp://*:5555");
 
-            ZmqSocket requester = new ZmqSocket(context, Zmq.REQ);
+            ZmqSocket requester = new ZmqSocket(context, ZMQ_REQ);
             try {
                 requester.connect("tcp://localhost:5555");
                 ZmqMsg request = new ZmqMsg(data);
@@ -74,11 +75,11 @@ public class ZmqSocketTest {
     send_and_recv_byte_array() {
         byte[] request = new byte[] { 1, 2, 3 };
 
-        ZmqSocket responder = new ZmqSocket(context, Zmq.REP);
+        ZmqSocket responder = new ZmqSocket(context, ZMQ_REP);
         try {
             responder.bind("tcp://*:5555");
 
-            ZmqSocket requester = new ZmqSocket(context, Zmq.REQ);
+            ZmqSocket requester = new ZmqSocket(context, ZMQ_REQ);
             try {
                 requester.connect("tcp://localhost:5555");
                 requester.send(request, 0);

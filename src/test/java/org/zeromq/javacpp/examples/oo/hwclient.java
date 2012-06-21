@@ -3,16 +3,15 @@ package org.zeromq.javacpp.examples.oo;
 import com.google.common.io.Closeables;
 import org.zeromq.javacpp.Zmq;
 import org.zeromq.javacpp.ZmqContext;
-import org.zeromq.javacpp.ZmqMsg;
 import org.zeromq.javacpp.ZmqSocket;
 
 public class hwclient {
     public static void main(String[] args) {
-        ZmqContext context = new ZmqContext(1);
+        ZmqContext context = Zmq.init(1);
         try {
             //  Socket to talk to server
             System.out.print("Connecting to hello world server…\n");
-            ZmqSocket requester = new ZmqSocket(context, Zmq.REQ);
+            ZmqSocket requester = context.req();
             try {
                 requester.connect("tcp://localhost:5555");
 

@@ -11,11 +11,11 @@ import org.zeromq.javacpp.ZmqSocket;
  */
 public class wuclient {
     public static void main(String[] args) {
-        ZmqContext context = new ZmqContext(1);
+        ZmqContext context = Zmq.init(1);
         try {
             //  Socket to talk to server
             System.out.println("Collecting updates from weather server…");
-            ZmqSocket subscriber = new ZmqSocket(context, Zmq.SUB);
+            ZmqSocket subscriber = context.sub();
             try {
                 subscriber.connect("tcp://localhost:5556");
 

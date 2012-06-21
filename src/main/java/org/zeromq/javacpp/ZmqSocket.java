@@ -10,7 +10,7 @@ import static org.zeromq.javacpp.ZmqJavacpp.*;
 public class ZmqSocket implements Closeable {
     final Pointer underlying;
 
-    public ZmqSocket(ZmqContext context, int type) {
+    ZmqSocket(ZmqContext context, int type) {
         underlying = zmq_socket(context.underlying, type);
         if (underlying == null) {
             throw new ZmqException(zmq_errno());

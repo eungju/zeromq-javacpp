@@ -9,7 +9,7 @@ import static org.zeromq.javacpp.ZmqJavacpp.*;
 public class ZmqContext implements Closeable {
     final Pointer underlying;
 
-    public ZmqContext(int ioThreads) {
+    ZmqContext(int ioThreads) {
         underlying = zmq_init(ioThreads);
         if (underlying == null) {
             throw new ZmqException(zmq_errno());
@@ -17,8 +17,29 @@ public class ZmqContext implements Closeable {
     }
 
     public void close() {
-        if (zmq_term(underlying) != 0) {
+        int rc = zmq_term(underlying);
+        if (rc != 0) {
             throw new ZmqException(zmq_errno());
         }
+    }
+
+    public ZmqSocket pair() {
+        return new ZmqSocket(this, ZMQ_PAIR);
+    }
+
+    public ZmqSocket pub() {
+        return new ZmqSocket(this, ZMQ_PUB);
+    }
+
+    public ZmqSocket sub() {
+        return new ZmqSocket(this, ZMQ_SUB);
+    }
+
+    public ZmqSocket req() {
+        return new ZmqSocket(this, ZMQ_REQ);
+    }
+
+    public ZmqSocket rep() {
+        return new ZmqSocket(this, ZMQ_REP);
     }
 }
