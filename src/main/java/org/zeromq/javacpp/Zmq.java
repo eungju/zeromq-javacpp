@@ -27,13 +27,15 @@ public class Zmq {
 
     static void throwIfNotZero(int rc) {
         if (rc != 0) {
-            throw new ZmqException(zmq_errno());
+            int errno = zmq_errno();
+            throw new ZmqException(zmq_strerror(errno), errno);
         }
     }
 
     static void throwIfNull(Object o) {
         if (o == null) {
-            throw new ZmqException(zmq_errno());
+            int errno = zmq_errno();
+            throw new ZmqException(zmq_strerror(errno), errno);
         }
     }
 }
