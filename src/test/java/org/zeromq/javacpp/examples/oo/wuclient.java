@@ -15,7 +15,7 @@ public class wuclient {
         try {
             //  Socket to talk to server
             System.out.println("Collecting updates from weather server…");
-            ZmqSocket subscriber = context.sub();
+            ZmqSocket subscriber = context.socket(Zmq.SUB);
             try {
                 subscriber.connect("tcp://localhost:5556");
 

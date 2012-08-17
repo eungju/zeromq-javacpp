@@ -10,7 +10,7 @@ public class hwserver {
         ZmqContext context = Zmq.init(1);
         try {
             //  Socket to talk to clients
-            ZmqSocket responder = context.rep();
+            ZmqSocket responder = context.socket(Zmq.REP);
             try {
                 responder.bind("tcp://*:5555");
 

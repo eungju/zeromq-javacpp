@@ -11,7 +11,7 @@ public class hwclient {
         try {
             //  Socket to talk to server
             System.out.print("Connecting to hello world server…\n");
-            ZmqSocket requester = context.req();
+            ZmqSocket requester = context.socket(Zmq.REQ);
             try {
                 requester.connect("tcp://localhost:5555");
 

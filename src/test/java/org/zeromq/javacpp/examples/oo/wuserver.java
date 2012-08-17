@@ -16,7 +16,7 @@ public class wuserver {
         //  Prepare our context and publisher
         ZmqContext context = Zmq.init(1);
         try {
-            ZmqSocket publisher = context.pub();
+            ZmqSocket publisher = context.socket(Zmq.PUB);
             try {
                 publisher.bind("tcp://*:5556");
                 publisher.bind("ipc://weather.ipc");

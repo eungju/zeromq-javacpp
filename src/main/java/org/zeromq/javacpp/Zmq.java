@@ -8,6 +8,23 @@ import static org.zeromq.javacpp.ZmqJavacpp.*;
 public class Zmq {
     static { Loader.load(ZmqJavacpp.class); }
 
+    /*  Socket types. */
+    public static final int PAIR = ZMQ_PAIR,
+            PUB = ZMQ_PUB,
+            SUB = ZMQ_SUB,
+            REQ = ZMQ_REQ,
+            REP = ZMQ_REP,
+            DEALER = ZMQ_DEALER,
+            ROUTER = ZMQ_ROUTER,
+            PULL = ZMQ_PULL,
+            PUSH = ZMQ_PUSH,
+            XPUB = ZMQ_XPUB,
+            XSUB = ZMQ_XSUB,
+            XREQ = ZMQ_XREQ,
+            XREP = ZMQ_XREP,
+            UPSTREAM = ZMQ_UPSTREAM,
+            DOWNSTREAM = ZMQ_DOWNSTREAM;
+
     /*  Send/recv options. */
     public static final int NOBLOCK = ZMQ_NOBLOCK,
             SNDMORE = ZMQ_SNDMORE;

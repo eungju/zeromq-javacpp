@@ -19,23 +19,7 @@ public class ZmqContext implements Closeable {
         Zmq.throwIfNotZero(rc);
     }
 
-    public ZmqSocket pair() {
-        return new ZmqSocket(this, ZMQ_PAIR);
-    }
-
-    public ZmqSocket pub() {
-        return new ZmqSocket(this, ZMQ_PUB);
-    }
-
-    public ZmqSocket sub() {
-        return new ZmqSocket(this, ZMQ_SUB);
-    }
-
-    public ZmqSocket req() {
-        return new ZmqSocket(this, ZMQ_REQ);
-    }
-
-    public ZmqSocket rep() {
-        return new ZmqSocket(this, ZMQ_REP);
+    public ZmqSocket socket(int type) {
+        return new ZmqSocket(this, type);
     }
 }
