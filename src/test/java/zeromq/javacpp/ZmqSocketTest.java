@@ -1,11 +1,11 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.zeromq.javacpp.ZmqJavacpp.*;
+import static zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqSocketTest {
     ZmqContext context;

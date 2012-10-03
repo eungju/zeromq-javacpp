@@ -1,8 +1,8 @@
-package org.zeromq.javacpp.examples.oo;
+package zeromq.javacpp.examples.oo;
 
-import org.zeromq.javacpp.Zmq;
-import org.zeromq.javacpp.ZmqContext;
-import org.zeromq.javacpp.ZmqSocket;
+import zeromq.javacpp.Zmq;
+import zeromq.javacpp.ZmqContext;
+import zeromq.javacpp.ZmqSocket;
 
 /**
  * Weather update client

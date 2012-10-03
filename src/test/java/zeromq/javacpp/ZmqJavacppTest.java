@@ -1,10 +1,10 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static org.zeromq.javacpp.ZmqJavacpp.*;
+import static zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqJavacppTest {
     @Test

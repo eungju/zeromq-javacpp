@@ -1,4 +1,4 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 import org.junit.Test;
 

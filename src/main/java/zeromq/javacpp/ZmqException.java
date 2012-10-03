@@ -1,4 +1,4 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 public class ZmqException extends RuntimeException {
     private final int errno;

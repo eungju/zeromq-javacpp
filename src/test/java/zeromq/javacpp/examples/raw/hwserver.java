@@ -1,9 +1,9 @@
-package org.zeromq.javacpp.examples.raw;
+package zeromq.javacpp.examples.raw;
 
 import com.googlecode.javacpp.BytePointer;
 import com.googlecode.javacpp.Pointer;
 
-import static org.zeromq.javacpp.ZmqJavacpp.*;
+import static zeromq.javacpp.ZmqJavacpp.*;
 
 public class hwserver {
     public static void main(String[] args) throws Exception {

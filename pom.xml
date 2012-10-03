@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.zeromq</groupId>
+	<groupId>zeromq</groupId>
 	<artifactId>zeromq-javacpp</artifactId>
 	<packaging>jar</packaging>
 	<version>0.1-SNAPSHOT</version>
@@ -135,7 +135,7 @@
                             <arguments>
                                 <argument>-jar</argument> <argument>${com.googlecode.javacpp:javacpp:jar}</argument>
                                 <argument>-classpath</argument> <argument>${project.build.outputDirectory}</argument>
-                                <argument>org/zeromq/javacpp/Javacpp</argument>
+                                <argument>zeromq/javacpp/Javacpp</argument>
                             </arguments>
                         </configuration>
                     </execution>

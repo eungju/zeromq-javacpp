@@ -1,10 +1,10 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 import com.googlecode.javacpp.Pointer;
 
 import java.io.Closeable;
 
-import static org.zeromq.javacpp.ZmqJavacpp.*;
+import static zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqContext implements Closeable {
     final Pointer underlying;

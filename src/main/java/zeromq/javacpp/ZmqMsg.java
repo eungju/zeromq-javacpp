@@ -1,10 +1,10 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 import com.googlecode.javacpp.BytePointer;
 
 import java.io.Closeable;
 
-import static org.zeromq.javacpp.ZmqJavacpp.*;
+import static zeromq.javacpp.ZmqJavacpp.*;
 
 public class ZmqMsg implements Closeable {
     final zmq_msg_t underlying;

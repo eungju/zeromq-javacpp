@@ -1,9 +1,9 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 import com.googlecode.javacpp.IntPointer;
 import com.googlecode.javacpp.Loader;
 
-import static org.zeromq.javacpp.ZmqJavacpp.*;
+import static zeromq.javacpp.ZmqJavacpp.*;
 
 public class Zmq {
     static { Loader.load(ZmqJavacpp.class); }

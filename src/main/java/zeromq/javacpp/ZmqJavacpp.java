@@ -1,4 +1,4 @@
-package org.zeromq.javacpp;
+package zeromq.javacpp;
 
 import com.googlecode.javacpp.FunctionPointer;
 import com.googlecode.javacpp.IntPointer;
